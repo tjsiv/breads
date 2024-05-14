@@ -1,4 +1,5 @@
 // DEPENDENCIES
+const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const express = require('express');
 
@@ -14,6 +15,9 @@ app.use(express.static('public'))
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
+
+//mongoose call
+mongoose.connect(process.env.MONGO_URI)
 
 // ROUTES
 app.get('/', (req,res) =>{
